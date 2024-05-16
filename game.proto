@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package game;
+
+message Game {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message GetGameRequest {
+  string game_id = 1;
+}
+
+message GetGameResponse {
+  Game game = 1;
+}
+
+message SearchGamesRequest {
+  string query = 1;
+}
+
+message SearchGamesResponse {
+  repeated Game games = 1;
+}
+
+message CreateGameRequest {
+  string game_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateGameResponse {
+  Game game = 1;
+}
+
+message UpdateGameRequest {
+  string game_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateGameResponse {
+  Game game = 1;
+}
+
+message DeleteGameRequest {
+  string game_id = 1;
+}
+
+message DeleteGameResponse {}
+
+service GameService {
+  rpc GetGame(GetGameRequest) returns (GetGameResponse);
+  rpc SearchGames(SearchGamesRequest) returns (SearchGamesResponse);
+  rpc CreateGame(CreateGameRequest) returns (CreateGameResponse);
+  rpc UpdateGame(UpdateGameRequest) returns (UpdateGameResponse);
+  rpc DeleteGame(DeleteGameRequest) returns (DeleteGameResponse);
+}

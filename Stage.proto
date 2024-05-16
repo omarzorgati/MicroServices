@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package stage;
+
+message Stage {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message GetStageRequest {
+  string stage_id = 1;
+}
+
+message GetStageResponse {
+  Stage stage = 1;
+}
+
+message SearchStagesRequest {
+  string query = 1;
+}
+
+message SearchStagesResponse {
+  repeated Stage stages = 1;
+}
+
+message CreateStageRequest {
+  string stage_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateStageResponse {
+  Stage stage = 1;
+}
+
+message UpdateStageRequest {
+  string stage_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateStageResponse {
+  Stage stage = 1;
+}
+
+message DeleteStageRequest {
+  string stage_id = 1;
+}
+
+message DeleteStageResponse {}
+
+service StageService {
+  rpc GetStage(GetStageRequest) returns (GetStageResponse);
+  rpc SearchStages(SearchStagesRequest) returns (SearchStagesResponse);
+  rpc CreateStage(CreateStageRequest) returns (CreateStageResponse);
+  rpc UpdateStage(UpdateStageRequest) returns (UpdateStageResponse);
+  rpc DeleteStage(DeleteStageRequest) returns (DeleteStageResponse);
+}
